@@ -1,0 +1,36 @@
+<div class="container" style="padding-top: 100px;">
+  <div class="row">
+    <div class="col-md-6">
+      <p>This is a test page to make transfers between two stellar accounts in the test network.</p>
+    </div>
+  </div>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="sourceAccount" class="control-label col-md-2">Source Account (secret key):</label>
+      <div class="col-md-8">
+        <input id="sourceAccount" name="sourceAccountSecret" type="text" class="form-control"
+               [(ngModel)]="srcAccountSecret"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="destAccount" class="control-label col-md-2">Dest Account:</label>
+      <div class="col-md-8">
+        <input id="destAccount" name="destAccount" type="text" class="form-control" [(ngModel)]="destAccountPublic"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="amount" class="control-label col-md-2">Amount:</label>
+      <div class="col-md-2">
+        <input id="amount" name="amount" type="text" class="form-control" [(ngModel)]="amount"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class=" col-md-10 col-md-offset-2">
+        <button type="button" class="btn btn-primary" (click)="makePayment()">Make Payment</button>
+      </div>
+    </div>
+    <div *ngFor="let alert of alerts">
+      <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="container" style="padding-top: 100px;">
+  <div class="row">
+    <div class="col-md-6">
+      <p>This is a test page to check account balance</p>
+    </div>
+  </div>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="accountId" class="control-label col-md-2">Account (public key):</label>
+      <div class="col-md-8">
+        <input id="accountId" name="accountId" type="text" class="form-control" [(ngModel)]="accountId">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button type="button" class="btn btn-primary" (click)="checkAccountBalance()">Check Account Balance</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <button type="button" class="btn btn-primary" (click)="qrCode()">Show QR Code</button>
+      </div>
+    </div>
+    <div class="form-group" *ngFor="let balance of balances">
+      <label class="control-label col-md-2">Asset Type:</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" [value]='balance.asset_type'>
+      </div>
+      <label class="control-label col-md-2">Balance:</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" [value]='balance.balance'>
+      </div>
+    </div>
+    <div class="col-md-offset-2 col-md-10" *ngIf="qrVisible">
+      <app-account-qr-code [qrSrc]="accountId" [qrSize]="150"></app-account-qr-code>
+    </div>
+  </form>
+</div>
