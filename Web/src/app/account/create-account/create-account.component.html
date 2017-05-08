@@ -1,0 +1,33 @@
+<div class="container" style="padding-top: 100px;">
+  <div class="col-md-10">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class=" col-md-10 col-md-offset-2">
+          <button type="button" class="btn btn-primary" (click)="getAccountKeys()">Generate Account Keys</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="accountPublicKey" class="control-label col-md-2">Public Key:</label>
+        <div class="col-md-8">
+          <input id="accountPublicKey" name="accountPublicKey" type="text" class="form-control"
+                 [(ngModel)]='publicKey'/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="accountSecretKey" class="control-label col-md-2">Secret Key:</label>
+        <div class="col-md-8">
+          <input id="accountSecretKey" name="accountSecretKey" type="text" class="form-control"
+                 [(ngModel)]='secretKey'/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class=" col-md-10 col-md-offset-2">
+          <button type="button" class="btn btn-primary" (click)="createAccount()">Create Account</button>
+        </div>
+      </div>
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+      </div>
+    </form>
+  </div>
+</div>
